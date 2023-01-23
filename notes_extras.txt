@@ -1,0 +1,39 @@
+//file -> input
+//create arr, create func to read input
+/*
+
+var story_one_arr = []
+var read_input_func = function(){
+    const f = require('fs');
+    const readline = require('readline');
+    var user_file = './story_one.txt';
+    var r = readline.createInterface({
+        input: f.createReadStream(user_file)
+    });
+    r.on('line', function (text){
+        story_one_arr.push(text);
+    })    
+}
+*/
+
+//trial to read input from read_input_func
+/*
+var read_input_trial = {
+    type: jsPsychCallFunction,
+    func: read_input_func
+}
+timeline.push(read_input_trial)
+*/
+
+//syncReadFile to read file
+/*
+function syncReadFile(filename) {
+    const contents = readFileSync(filename, 'utf-8');
+  
+    const arr = contents.split(/\r?\n/);
+  
+    console.log(arr); 
+  
+    return arr;
+}
+*/
