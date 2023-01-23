@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Self paced reading with moving window</title>
+
+        <meta charset="UTF-8">
+
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/jspsych.js"></script>
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/plugin-html-keyboard-response.js"></script>
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/plugin-html-button-response.js"></script>
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/plugin-survey-html-form.js"></script>
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/plugin-survey-multi-choice.js"></script>
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/plugin-survey-multi-select.js"></script>
+
+        <!-- Generic jspsych style sheets -->
+        <link href="https://web-experiments.lab.hum.uu.nl/jspsych/7.0.0/jspsych.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Uil OTS libraries -->
+        <script src="https://web-experiments.lab.hum.uu.nl/jspsych/uil-utils/0.1/jspsych-uil-utils.js"></script>
+        <link href="https://web-experiments.lab.hum.uu.nl/jspsych/uil-utils/0.1/fonts.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Uil OTS scripts -->
+        <script src="globals.js"></script>
+        <script src="consent.js"></script>
+        <script src="instructions.js"></script>
+        <script src="stimuli.js"></script>
+        <script src="survey.js"></script>
+
+        <!--maybe one day this plugin will be put in the mainline jsPsych
+             repository.-->
+        <script src="plugins/jspsych-spr-moving-window.js"></script>
+        <script src="plugins/plugin-virtual-chinrest.js"></script>
+        <!--<script src="plugins/jspsych-moving-window.js"></script> -->
+
+        <script src="https://unpkg.com/@jspsych-contrib/plugin-self-paced-reading@1.0.0"></script>
+
+        <script src="main.js"></script>
+        <style>
+            .jspsych-survey-multi-choice-text {
+                text-align: left !important;
+            }
+        </style>
+
+
+    </head>
+    <body></body>
+    <script>
+        // see main.js for the main function and experiment timeline
+        window.addEventListener('load', main);
+    </script>
+</html>
