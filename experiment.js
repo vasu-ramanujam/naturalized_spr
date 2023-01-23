@@ -63,17 +63,33 @@ var story_one = [
     { part: story_one_seven}
 ];
 
-var display = {
+var display_text = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: jsPsych.timelineVariable("part")
 }
 
+var questions_one = [
+    {question: "This is question one. a or b?" },
+    {question: "This is question two. a or b?" },
+];
+
+var ask_questions_one = {
+    type: jsPsychHtmlButtonResponse,
+    choices: ['a', 'b'],
+    stimulus: jsPsych.timelineVariable("question")
+}
+
 var display_story_one = {
-    timeline: [display],
+    timeline: [display_text],
     timeline_variables: story_one
 }
 timeline.push(display_story_one);
 
+var display_one_questions = {
+    timeline: [ask_questions_one],
+    timeline_variables: questions_one
+}
+timeline.push(display_one_questions);
 
 
 //questions
