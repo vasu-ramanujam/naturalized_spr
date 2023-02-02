@@ -37,3 +37,34 @@ function syncReadFile(filename) {
     return arr;
 }
 */
+
+
+//rn display stories as html-keyboard-response. later, add it in as SPR moving window.
+/*
+const story_one_as_html = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: story_one.txt
+}
+timeline.push(story_one_as_html);
+*/
+
+
+//array of words 
+/*
+//var story_one_arr = syncReadFile('story_one.txt');
+var story_one_arr = ["This is the first sentence. Story one part one.", "This is the second sentence. Story one part two.", "This is the third sentence. Story one part three.", story_one_text];
+var counter = 0;
+
+//turn array -> variables
+
+var some_trial = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: function(){
+        return "<p>" + story_one_arr[counter++] + "</p>";
+    }
+}
+
+for (let i = 0; i < story_one_arr.length; i++){
+    timeline.push(some_trial);
+}
+*/

@@ -1,8 +1,9 @@
 
 
-var jsPsych = initJsPsych();
+var jsPsych = initJsPsych(
+    experiment_width = 500
+);
 var timeline = [];
-
 
 
 //1. welcome screen
@@ -11,18 +12,28 @@ const welcome = {
     stimulus: 'Welcome to the experiment! Press any key to begin.'
 }
 timeline.push(welcome);
+var enter_fullscreen = {
+    type: jsPsychFullscreen,
+    fullscreen_mode: true
+  }
+timeline.push(enter_fullscreen);
 
 
 
+var div_width_px;
+//var div_height_deg;
 //2. virtual chinrest
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
     resize_units: "cm",
-    pixels_per_unit: 50
+    pixels_per_unit: 25,
+    on_finish: function(data){
+
+        //dont do anything 
+    }
 };
 timeline.push(get_size);
-
 var resized_stimulus = {
     type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -32,6 +43,19 @@ var resized_stimulus = {
   choices: ['Continue']
 };
 timeline.push(resized_stimulus);
+
+/*
+    ,on_finish: function(data){
+        div_width_px = data.item_width_px;
+        //div_height_deg = data.item_height_deg;
+        var computed_font_size = window.getComputedStyle(document.getElementByTagName("p")).fontSize;
+        alert(computed_font_size);
+        */
+
+
+
+
+//CALCULATE SIZE HERE
 
 
 //3. instructions
@@ -49,23 +73,52 @@ const instructions = {
 timeline.push(instructions);
 
 
-
 //timeline variables of stories. works as hardcoded string
 
 //4. display story one
+function append_and_return_ros (splits, total_string, num_chars) {
+    var substr = total_string.slice(0, num_chars);
+    var cut_index = substr.lastIndexOf(" ") == -1 ? substr.length : substr.lastIndexOf(" ")+1;
+    var substr_worded = substr.slice(0, cut_index);
+    splits.push(substr_worded);
+    return total_string.slice(substr_worded.length);
+}
+
+function split_function (char_space, story) {
+    var story_splits = [];
+    var remaining_bit = [story];
+    while (!(remaining_bit[0] === "")) {
+        remaining_bit.push(append_and_return_ros(story_splits, remaining_bit.pop(), char_space));
+    }
+	return story_splits;
+}
+
+
+var story_one_splits = split_function(1000, story_one_total);
+var story_one = [];
+for (let i = 0; i < story_one_splits.length; i++){
+    story_one.push({part: story_one_splits[i]});
+}
+//alert(story_one_splits.length);
+
+/*
+
 var story_one = [
     { part: story_one_one },
-    { part: story_one_two},
-    { part: story_one_three},
-    { part: story_one_four},
-    { part: story_one_five},
-    { part: story_one_six},
-    { part: story_one_seven}
+    { part: story_one_two}
 ];
+
+
+*/
 
 var display_text = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: jsPsych.timelineVariable("part")
+    stimulus: function(){
+        var stim = '<p class="story_text">' + jsPsych.timelineVariable("part") + '</p>';
+        return stim;
+    }
+    //jsPsych.timelineVariable("part")
+    //,css_classes: ['story_display']
 }
 
 var questions_one = [
