@@ -1,8 +1,6 @@
 
 
-var jsPsych = initJsPsych(
-    experiment_width = 500
-);
+var jsPsych = initJsPsych();
 var timeline = [];
 
 
@@ -23,13 +21,15 @@ timeline.push(enter_fullscreen);
 var div_width_px;
 //var div_height_deg;
 //2. virtual chinrest
+var computed_div_width;
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
     resize_units: "cm",
     pixels_per_unit: 25,
     on_finish: function(data){
-
+        computed_div_width = window.getComputedStyle(document.getElementByTagName("div")).width;
+        alert(computed_div_width);
         //dont do anything 
     }
 };
@@ -48,9 +48,9 @@ timeline.push(resized_stimulus);
     ,on_finish: function(data){
         div_width_px = data.item_width_px;
         //div_height_deg = data.item_height_deg;
-        var computed_font_size = window.getComputedStyle(document.getElementByTagName("p")).fontSize;
+        var computed_font_size = window.getComputedStyle(document.getElementByTagName("div")).width;
         alert(computed_font_size);
-        */
+        
 
 
 
@@ -77,8 +77,13 @@ timeline.push(instructions);
 
 //4. display story one
 function append_and_return_ros (splits, total_string, num_chars) {
-    var substr = total_string.slice(0, num_chars);
-    var cut_index = substr.lastIndexOf(" ") == -1 ? substr.length : substr.lastIndexOf(" ")+1;
+    var substr = total_string.substring(0, num_chars);
+    var cut_index;
+    if (substr.length < num_chars || substr.lastIndexOf(" ") == -1){
+        cut_index = substr.length;
+    } else {
+        cut_index = substr.lastIndexOf(" ") + 1;
+    }
     var substr_worded = substr.slice(0, cut_index);
     splits.push(substr_worded);
     return total_string.slice(substr_worded.length);
@@ -99,7 +104,6 @@ var story_one = [];
 for (let i = 0; i < story_one_splits.length; i++){
     story_one.push({part: story_one_splits[i]});
 }
-//alert(story_one_splits.length);
 
 /*
 

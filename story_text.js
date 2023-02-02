@@ -53,7 +53,7 @@ Almost instantly, the Lord saw that the second huntsman had fed him a pack of li
 The Lord believed the second huntsman had tried to steal the first huntsman's prize and so proclaimed the first huntsman the true victor. 
 The Lord wondered for a moment why he always encountered so much chicanery in his everyday interactions. 
 The huntsman who had earned his prize fair and square received as his reward a piece of land just outside the town, known thereafter as Hunt Yard. 
-His fame was indeed assured, but it was not nearly as lasting as that of the fearsome Bradford Boar.`;
+His fame was indeed assured, but it was not nearly as lasting as that of the fearsome Bradford Boar. `;
 
 
 var story_one_one = `
