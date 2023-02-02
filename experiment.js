@@ -18,20 +18,13 @@ timeline.push(enter_fullscreen);
 
 
 
-var div_width_px;
 //var div_height_deg;
 //2. virtual chinrest
-var computed_div_width;
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
     resize_units: "cm",
-    pixels_per_unit: 25,
-    on_finish: function(data){
-        computed_div_width = window.getComputedStyle(document.getElementByTagName("div")).width;
-        alert(computed_div_width);
-        //dont do anything 
-    }
+    pixels_per_unit: 50,
 };
 timeline.push(get_size);
 var resized_stimulus = {
@@ -51,7 +44,7 @@ timeline.push(resized_stimulus);
         var computed_font_size = window.getComputedStyle(document.getElementByTagName("div")).width;
         alert(computed_font_size);
         
-
+*/
 
 
 
@@ -99,7 +92,7 @@ function split_function (char_space, story) {
 }
 
 
-var story_one_splits = split_function(1000, story_one_total);
+var story_one_splits = split_function(500, story_one_total);
 var story_one = [];
 for (let i = 0; i < story_one_splits.length; i++){
     story_one.push({part: story_one_splits[i]});
