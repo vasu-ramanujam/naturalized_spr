@@ -3,23 +3,21 @@
 var jsPsych = initJsPsych();
 var timeline = [];
 
-
-//1. welcome screen
+//INTRODUCTION AND FULLSCREEN
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: 'Welcome to the experiment! Press any key to begin.'
 }
 timeline.push(welcome);
+
 var enter_fullscreen = {
     type: jsPsychFullscreen,
     fullscreen_mode: true
   }
 timeline.push(enter_fullscreen);
 
+//VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
-
-//var div_height_deg;
-//2. virtual chinrest
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
@@ -37,21 +35,8 @@ var resized_stimulus = {
 };
 timeline.push(resized_stimulus);
 
-/*
-    ,on_finish: function(data){
-        div_width_px = data.item_width_px;
-        //div_height_deg = data.item_height_deg;
-        var computed_font_size = window.getComputedStyle(document.getElementByTagName("div")).width;
-        alert(computed_font_size);
-        
-*/
-
-
-
-//CALCULATE SIZE HERE
-
-
-//3. instructions
+//CALCULATE amount of characters to display on screen
+//INSTRUCTIONS
 const instructions = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -64,6 +49,7 @@ const instructions = {
     `
 }
 timeline.push(instructions);
+
 
 
 //timeline variables of stories. works as hardcoded string
@@ -91,22 +77,15 @@ function split_function (char_space, story) {
 	return story_splits;
 }
 
+var num_chars = 500;
 
-var story_one_splits = split_function(500, story_one_total);
+
+//START STORY ONE
+var story_one_splits = split_function(num_chars, story_one_total);
 var story_one = [];
 for (let i = 0; i < story_one_splits.length; i++){
     story_one.push({part: story_one_splits[i]});
 }
-
-/*
-
-var story_one = [
-    { part: story_one_one },
-    { part: story_one_two}
-];
-
-
-*/
 
 var display_text = {
     type: jsPsychHtmlKeyboardResponse,
@@ -119,13 +98,13 @@ var display_text = {
 }
 
 var questions_one = [
-    {question: "This is question one. a or b?" },
-    {question: "This is question two. a or b?" },
+    {question: "This is question one." , choice_a:"first choice", choice_b: "second choice"},
+    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
 ];
 
 var ask_questions_one = {
     type: jsPsychHtmlButtonResponse,
-    choices: ['a', 'b'],
+    choices: [jsPsych.timelineVariable("choice_a"), jsPsych.timelineVariable("choice_b")],
     stimulus: jsPsych.timelineVariable("question")
 }
 
@@ -133,13 +112,16 @@ var display_story_one = {
     timeline: [display_text],
     timeline_variables: story_one
 }
-timeline.push(display_story_one);
+//timeline.push(display_story_one);
 
 var display_one_questions = {
     timeline: [ask_questions_one],
     timeline_variables: questions_one
 }
-timeline.push(display_one_questions);
+//timeline.push(display_one_questions);
+
+var story_one_timeline = [display_story_one, display_one_questions];
+//END STORY ONE
 
 
 //questions

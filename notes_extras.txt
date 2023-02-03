@@ -68,3 +68,15 @@ for (let i = 0; i < story_one_arr.length; i++){
     timeline.push(some_trial);
 }
 */
+
+
+
+/*
+    ,on_finish: function(data){
+        div_width_px = data.item_width_px;
+        //div_height_deg = data.item_height_deg;
+        var computed_font_size = window.getComputedStyle(document.getElementByTagName("div")).width;
+        alert(computed_font_size);
+        
+*/
+
