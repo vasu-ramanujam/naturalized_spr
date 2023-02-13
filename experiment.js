@@ -14,7 +14,7 @@ var enter_fullscreen = {
     type: jsPsychFullscreen,
     fullscreen_mode: true
   }
-timeline.push(enter_fullscreen);
+//timeline.push(enter_fullscreen);
 
 //VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
@@ -77,51 +77,94 @@ function split_function (char_space, story) {
 	return story_splits;
 }
 
+////var screen_width = window.innerWidth;
+//var p_tag = document.getElementsByTagName("p");
+//var p_em_pixels = getEmPixels(p_tag);
+//var p_em_pixels = 20;
+
+//var num_chars = .8*screen_width * 10 / p_em_pixels ;
 var num_chars = 500;
 
 
-//START STORY ONE
-var story_one_splits = split_function(num_chars, story_one_total);
-var story_one = [];
-for (let i = 0; i < story_one_splits.length; i++){
-    story_one.push({part: story_one_splits[i]});
+//get array of all split story variables
+var stories_total = [story_one_total, story_two_total, story_three_total, story_four_total, story_five_total, story_six_total, story_seven_total, story_eight_total, story_nine_total, story_ten_total, story_eleven_total, story_twelve_total];
+var stories = [];
+
+for (let st_idx = 0; st_idx < stories_total.length; st_idx++){
+    var story_split = split_function(num_chars, stories_total[st_idx]);
+    var story = [];
+    for (let i = 0; i < story_split.length; i++){
+        story.push({part: story_split[i]});
+    }
+    stories.push(story);
 }
 
+
+//general timeline variable trial
 var display_text = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: function(){
         var stim = '<p class="story_text">' + jsPsych.timelineVariable("part") + '</p>';
         return stim;
     }
-    //jsPsych.timelineVariable("part")
-    //,css_classes: ['story_display']
 }
-
-var questions_one = [
-    {question: "This is question one." , choice_a:"first choice", choice_b: "second choice"},
-    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
-];
-
-var ask_questions_one = {
+var ask_questions = {
     type: jsPsychHtmlButtonResponse,
     choices: [jsPsych.timelineVariable("choice_a"), jsPsych.timelineVariable("choice_b")],
     stimulus: jsPsych.timelineVariable("question")
 }
 
+
+var questions_one = [
+    {question: "What is depicted on the Crest of the City of Bradford?" , choice_a:"boar's head", choice_b: "a spinning jenny"},
+    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question three. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question four. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question five. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question six. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question seven. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question eight. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question nine. ", choice_a:"third choice", choice_b: "fourth choice" },
+    {question: "This is question ten. ", choice_a:"third choice", choice_b: "fourth choice" }
+];
+
+var questions_two = [
+    {question: "story 2 q1", choice_a:"third choice", choice_b: "fourth choice" }
+];
+
+//create array of questions (node.js's readline()
+var questions = [questions_one, questions_two];
+
+
 var display_story_one = {
-    timeline: [display_text],
-    timeline_variables: story_one
+    timeline: [display_text]
+    ,timeline_variables: stories[0]
 }
-//timeline.push(display_story_one);
 
 var display_one_questions = {
-    timeline: [ask_questions_one],
-    timeline_variables: questions_one
+    timeline: [ask_questions]
+    ,timeline_variables: questions[0]
 }
-//timeline.push(display_one_questions);
 
-var story_one_timeline = [display_story_one, display_one_questions];
+var display_story_two = {
+    timeline: [display_text]
+    ,timeline_variables: stories[1]
+}
+
+var display_two_questions = {
+    timeline: [ask_questions]
+    ,timeline_variables: questions[1]
+}
+
+var group_one_procedure = {
+    timeline: [display_story_one, display_one_questions, display_story_two, display_two_questions],
+}
+
+timeline.push(group_one_procedure);
 //END STORY ONE
+
+
 
 
 //questions
