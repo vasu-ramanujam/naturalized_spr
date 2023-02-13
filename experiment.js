@@ -133,32 +133,33 @@ var questions_two = [
     {question: "story 2 q1", choice_a:"third choice", choice_b: "fourth choice" }
 ];
 
-//create array of questions (node.js's readline()
+//create array of questions (node.js's readline())
 var questions = [questions_one, questions_two];
 
+var display_stories_arr = [];
+var ask_questions_arr = [];
 
-var display_story_one = {
-    timeline: [display_text]
-    ,timeline_variables: stories[0]
+for (let i = 0; i < 12; i++){
+    var display = {
+        timeline: [display_text],
+        timeline_variables: stories[i]
+    }
+
+    display_stories_arr.push(display);
+
+    var ask = {
+        timeline: [ask_questions], 
+        timeline_variables: questions[i]
+    }
+    ask_questions_arr.push(ask);
 }
 
-var display_one_questions = {
-    timeline: [ask_questions]
-    ,timeline_variables: questions[0]
-}
 
-var display_story_two = {
-    timeline: [display_text]
-    ,timeline_variables: stories[1]
-}
 
-var display_two_questions = {
-    timeline: [ask_questions]
-    ,timeline_variables: questions[1]
-}
+
 
 var group_one_procedure = {
-    timeline: [display_story_one, display_one_questions, display_story_two, display_two_questions],
+    timeline: [display_stories_arr[0], ask_questions_arr[0], display_stories_arr[1], ask_questions_arr[1]],
 }
 
 timeline.push(group_one_procedure);
