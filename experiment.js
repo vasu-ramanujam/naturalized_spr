@@ -42,10 +42,10 @@ var enter_fullscreen = {
     type: jsPsychFullscreen,
     fullscreen_mode: true
   }
-//timeline.push(enter_fullscreen);
+timeline.push(enter_fullscreen);
 //VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
-/*
+
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
@@ -65,7 +65,7 @@ var resized_stimulus = {
   choices: ['Continue']
 };
 timeline.push(resized_stimulus);
-*/
+
 
 
 //CALCULATE amount of characters to display on screen
