@@ -1,4 +1,15 @@
 //--- hardcode stories (not as text files)
+var face_name_procedure = {
+    timeline: [...],
+    timeline_variables: [
+        { face: 'person-1.jpg', name: 'Alex' },
+        { face: 'person-2.jpg', name: 'Beth' },
+        { face: 'person-3.jpg', name: 'Chad' },
+        { face: 'person-4.jpg', name: 'Dave' }
+    ],
+    randomize_order: true
+}
+
 
 var story_one_total = `If you were to journey to the North of England, you would come to a valley that is surrounded by moors as high as mountains. 
 It is in this valley where you would find the city of Bradford, where once a thousand spinning-jennies that hummed and clattered spun wool into money for the long-bearded mill owners. 
@@ -281,5 +292,6 @@ var story_ten_total = ``;
 
 var story_eleven_total = ``;
 
-var story_twelve_total = ``;
+var story_twelve_total = 
+
 

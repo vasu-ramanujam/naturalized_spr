@@ -1,30 +1,61 @@
-
-
-var jsPsych = initJsPsych();
+var jsPsych = initJsPsych({
+    show_progress_bar:true,
+    auto_update_progress_bar: false,
+    message_progress_bar:'',
+    on_finish: function() {
+        jsPsych.data.displayData('csv');
+    }
+})
 var timeline = [];
+var practice_timeline = [];
+var story1_timeline = [];
+var story2_timeline = [];
+var story3_timeline = [];
+
 
 //INTRODUCTION AND FULLSCREEN
+/*
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: 'Welcome to the experiment! Press any key to begin.'
 }
 timeline.push(welcome);
+*/
+
+
+const KEY_CODE_SPACE = ' ';
+const G_QUESTION_CHOICES = [FALSE_BUTTON_TEXT, TRUE_BUTTON_TEXT];
+
+let welcome_screen = {
+    type : jsPsychHtmlKeyboardResponse,
+    stimulus : WELCOME_INSTRUCTION,
+    choices : [KEY_CODE_SPACE],
+    response_ends_trial : true
+    //on_finish: function (data) {
+    //    data.rt = Math.round(data.rt);
+    //}
+};
+timeline.push(welcome_screen);
+
 
 var enter_fullscreen = {
     type: jsPsychFullscreen,
     fullscreen_mode: true
   }
 //timeline.push(enter_fullscreen);
-
 //VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
+/*
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
     resize_units: "cm",
     pixels_per_unit: 50,
 };
+
 timeline.push(get_size);
+
+
 var resized_stimulus = {
     type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -34,6 +65,8 @@ var resized_stimulus = {
   choices: ['Continue']
 };
 timeline.push(resized_stimulus);
+*/
+
 
 //CALCULATE amount of characters to display on screen
 //INSTRUCTIONS
@@ -41,20 +74,33 @@ const instructions = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
     <p>This experiment requires three-time visits. </p>
-<p>On each visit, you will read four stories, each of which is followed by 12 comprehension questions.</p>
-<p>Completion of comprehension questions with at least 75% accuracy will result in a reward of $3.</p><br>
+    <p>On each visit, you will read four stories, each of which is followed by 12 comprehension questions.</p>
+    <p>Completion of comprehension questions with at least 75% accuracy will result in a reward of $3.</p><br>
 
-<p>This will be a self-paced reading task. You will see each set of sentences on the screen filled with dashes. Press SPACE to advance to the next word.</p>
-<p> Press any key to begin</p>
+    <p>This will be a self-paced reading task. You will see each set of sentences on the screen filled with dashes. Press SPACE to advance to the next word.</p>
+    <p> Press any key to begin</p>
     `
 }
-timeline.push(instructions);
+//timeline.push(instructions);
 
 
 
-//timeline variables of stories. works as hardcoded string
+let fixcross = {
+    type : sprMovingWindow,
+    stimulus : '+',
+    choices : FIX_CHOICES,
+    font_family : "Times New Roman",
+    font_size : 36,
+    width : MIN_WIDTH,
+    height : MIN_HEIGHT,
+    trial_duration : FIX_DUR,
+    data : {
+    //    id : jsPsych.timelineVariable('id'),
+    //    item_type : 'FIX_CROSS',
+        uil_save : false
+    }
+};
 
-//4. display story one
 function append_and_return_ros (splits, total_string, num_chars) {
     var substr = total_string.substring(0, num_chars);
     var cut_index;
@@ -77,130 +123,146 @@ function split_function (char_space, story) {
 	return story_splits;
 }
 
+let present_text = {type: sprMovingWindow,
+  stimulus: jsPsych.timelineVariable('part'),
+  background_color : "rgb(230, 230, 230)", // light gray
+  font_color : "rgb(0, 0, 0)", // black
+  font_family : "Times New Roman",
+  font_size : 36,
+  width : MIN_WIDTH,
+  height : MIN_HEIGHT,
+  post_trial_gap : 0, //  ISI should be what??
+  grouping_string : GROUPING_STRING,
+  data : {
+      id : jsPsych.timelineVariable('id'),
+      //rt1: rt1,
+      string : jsPsych.timelineVariable('part'),
+      uil_save: true},
+      on_start: function() {
+        jsPsych.show_progress_bar= true,
+        document.getElementById('jspsych-progressbar-container').innerHTML = '<span>First Story</span><div id="jspsych-progressbar-outer"><div id="jspsych-progressbar-inner"></div></div>';
+        jsPsych.setProgressBar(page_index/ttl_page);
+        page_index++;
+      }
+    
+  }
+
+
+//4. display story one
 ////var screen_width = window.innerWidth;
 //var p_tag = document.getElementsByTagName("p");
 //var p_em_pixels = getEmPixels(p_tag);
 //var p_em_pixels = 20;
 
 //var num_chars = .8*screen_width * 10 / p_em_pixels ;
-var num_chars = 500;
 
 
-//get array of all split story variables
-var stories_total = [story_one_total, story_two_total, story_three_total, story_four_total, story_five_total, story_six_total, story_seven_total, story_eight_total, story_nine_total, story_ten_total, story_eleven_total, story_twelve_total];
-var stories = [];
+//===== Practice Phase
 
-for (let st_idx = 0; st_idx < stories_total.length; st_idx++){
-    var story_split = split_function(num_chars, stories_total[st_idx]);
-    var story = [];
-    for (let i = 0; i < story_split.length; i++){
-        story.push({part: story_split[i]});
-    }
-    stories.push(story);
+var num_chars = 50;
+var practice1_split = split_function(num_chars,practice1_story2);
+var p1 = []
+for (let i = 0; i < practice1_split.length; i++){
+    p1.push({id: 'practice1',
+                    part: practice1_split[i]});
+};
+// These should be initialized before each practice and reading phase
+var page_index = 1;
+var ttl_page = practice1_split.length;
+
+
+var reading_phase = {
+    timeline:   [fixcross,
+                present_text],
+    timeline_variables: p1}
+
+timeline.push(reading_phase);
+
+
+/* Create practice */
+
+var quiz_phase= {
+    timeline: [{type: jsPsychHtmlButtonResponse,
+                choices: [jsPsych.timelineVariable("a0"), 
+                         jsPsych.timelineVariable("a1")],
+                stimulus: jsPsych.timelineVariable("q"),
+                data: {correct_response: jsPsych.timelineVariable("cr")},
+                on_start:function(){
+                  jsPsych.setProgressBar(0);
+                  document.getElementById('jspsych-progressbar-container').innerHTML = '<span> </span><div id="jspsych-progressbar-outer"><div id="jspsych-progressbar-inner"></div></div>';
+                },
+                on_finish: function(data){
+                            if(jsPsych.pluginAPI.compareKeys(data.response, data.correct_response)){
+                              data.correct = true;
+                            } else {
+                              data.correct = false;
+                            }
+                           }}],
+    timeline_variables: practice1_questions
 }
 
+timeline.push(quiz_phase);
 
-//general timeline variable trial
-var display_text = {
+
+
+
+//timeline.push(story1_phase);
+//timeline.push(story2_phase);
+//timeline.push(story3_phase);
+
+
+
+
+
+var feedback_phase = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: function(){
-        var stim = '<p class="story_text">' + jsPsych.timelineVariable("part") + '</p>';
-        return stim;
+      // The feedback stimulus is a dynamic parameter because we can't know in advance whether
+      // the stimulus should be 'correct' or 'incorrect'.
+      // Instead, this function will check the accuracy of the last response and use that information to set
+      // the stimulus value on each trial.
+      var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+      if(last_trial_correct){
+        return "<p>Correct!</p>"; // the parameter value has to be returned from the function
+      } else {
+        return "<p>Wrong.</p>"; // the parameter value has to be returned from the function
+      }
     }
-}
-var ask_questions = {
-    type: jsPsychHtmlButtonResponse,
-    choices: [jsPsych.timelineVariable("choice_a"), jsPsych.timelineVariable("choice_b")],
-    stimulus: jsPsych.timelineVariable("question")
-}
+  }
 
+timeline.push(feedback_phase);
+//timeline.push(practice_timeline);
+//===== Story 1 Phase
 
-var questions_one = [
-    {question: "What is depicted on the Crest of the City of Bradford?" , choice_a:"boar's head", choice_b: "a spinning jenny"},
-    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question three. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question two. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question four. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question five. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question six. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question seven. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question eight. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question nine. ", choice_a:"third choice", choice_b: "fourth choice" },
-    {question: "This is question ten. ", choice_a:"third choice", choice_b: "fourth choice" }
-];
+//story1_timeline.push(reading_phase);
+//story1_timeline.push(quiz_phase);
+//story1_timeline.push(feedback_phase);
+//timeline.push(story1_timeline);
 
-var questions_two = [
-    {question: "story 2 q1", choice_a:"third choice", choice_b: "fourth choice" }
-];
+//===== Story 2 Phase
 
-//create array of questions (node.js's readline())
-var questions = [questions_one, questions_two];
+//story2_timeline.push(reading_phase);
+//story2_timeline.push(quiz_phase);
+//story2_timeline.push(feedback_phase);
+//timeline.push(story2_timeline);
 
-var display_stories_arr = [];
-var ask_questions_arr = [];
+//===== Story 3 Phase
 
-for (let i = 0; i < 12; i++){
-    var display = {
-        timeline: [display_text],
-        timeline_variables: stories[i]
-    }
+//story3_timeline.push(reading_phase);
+//story3_timeline.push(quiz_phase);
+//story3_timeline.push(feedback_phase);
+//timeline.push(story3_timeline);
 
-    display_stories_arr.push(display);
-
-    var ask = {
-        timeline: [ask_questions], 
-        timeline_variables: questions[i]
-    }
-    ask_questions_arr.push(ask);
-}
-
-
-
-
-
-var group_one_procedure = {
-    timeline: [display_stories_arr[0], ask_questions_arr[0], display_stories_arr[1], ask_questions_arr[1]],
-}
-
-timeline.push(group_one_procedure);
-//END STORY ONE
-
-
-
-
-//questions
-
-
-
-
-//moving window
-/*
-var present_text = {
-    type : sprMovingWindow,
-    stimulus : "This is a sample stimulus",
-    grouping_string : null,
-}
-timeline.push(present_text);
-
-*/
-
-
-/* NOT WORKING (idk y)
-var trial_window = {
-    type: "moving-window",
-    words: "The dog chased the car"
-
-}
-timeline.push(trial_window);
-*/
 
 
 var end = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: 'The trial has ended. '
+    stimulus: 'The trial has ended. ',
+    on_load: function() {
+            uil.saveData();
+        }
 }
+
 timeline.push(end);
-
-
 
 jsPsych.run(timeline);

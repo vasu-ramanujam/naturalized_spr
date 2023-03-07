@@ -6,7 +6,7 @@
 // If you do not fill out a valid key, the participant's
 // browser will not be able to upload the data to the server.
 // Replace this by a PERFECT COPY of the key from the data server.
-
+const ACCESS_KEY = '00000000-0000-0000-0000-000000000000';
 
 //RANDOMIZATION
 
@@ -19,8 +19,8 @@ const MAX_SUCCEEDING_ITEMS_OF_TYPE = 2
 // the sentences are drawn. Keep in mind, that you'll exclude
 // participants with a low screen resolution when you set this too
 // high.
-//const MIN_WIDTH = 1000;
-//const MIN_HEIGHT = 600;
+const MIN_WIDTH = 1000;
+const MIN_HEIGHT = 600;
 
 // The ISI will be added after each trial/stimulus
 const ISI = 500; //ms
