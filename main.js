@@ -1,15 +1,15 @@
-import SelfPacedReadingPlugin from '@jspsych-contrib/plugin-self-paced-reading';
-
 let jsPsych = initJsPsych({
     exclusions: {
         min_width : MIN_WIDTH,
         min_height : MIN_HEIGHT
+    },
+    on_finish: function() {
+        jsPsych.data.displayData('csv');
     }
 });
 
 const KEY_CODE_SPACE = ' ';
 const G_QUESTION_CHOICES = [FALSE_BUTTON_TEXT, TRUE_BUTTON_TEXT];
-
 
 let welcome_screen = {
     type : jsPsychHtmlKeyboardResponse,
@@ -31,33 +31,14 @@ let instruction_screen_practice = {
     }
 };
 
-const get_size = {
-    type: jsPsychVirtualChinrest,
-    blindspot_reps: 3,
-    resize_units: "cm",
-    pixels_per_unit: 50
-};
-
-var resized_stimulus = {
-    type: jsPsychHtmlButtonResponse,
-  stimulus: `
-    <p>If the measurements were done correctly, the square below should be 10 cm x 10 cm.</p>
-    <div style="background-color: black; width: 500px; height: 500px; margin: 20px auto;"></div>
-  `,
-  choices: ['Continue']
-};
-
-var mw_prac = {
-    type: 'moving-window',
-    words: 'The dog chased the car'
-    //stimulus: 'The dog chased the car'
-}
-
-
 let fixcross = {
     type : sprMovingWindow,
     stimulus : '+',
     choices : FIX_CHOICES,
+    font_family : "Times New Roman",
+    font_size : 36,
+    width : MIN_WIDTH,
+    height : MIN_HEIGHT,
     trial_duration : FIX_DUR,
     data : {
         id : jsPsych.timelineVariable('id'),
@@ -69,7 +50,13 @@ let fixcross = {
 let present_text = {
     type : sprMovingWindow,
     stimulus : jsPsych.timelineVariable('stimulus'),
-post_trial_gap : ISI,
+    background_color : "rgb(230, 230, 230)", // light gray
+    font_color : "rgb(0, 0, 0)", // black
+    font_family : "Times New Roman",
+    font_size : 36,
+    width : MIN_WIDTH,
+    height : MIN_HEIGHT,
+    post_trial_gap : ISI,
     grouping_string : GROUPING_STRING,
     data : {
         id : jsPsych.timelineVariable('id'),
@@ -142,13 +129,6 @@ function getTimeline(stimuli) {
 
     // add survey
     timeline.push(survey_procedure);
-
-    //virtual chinrest
-    //timeline.push(mw_prac);
-    timeline.push(get_size);
-    timeline.push(resized_stimulus);
-
-
 
     // Add the different parts of the experiment to the timeline
     timeline.push(instruction_screen_practice);

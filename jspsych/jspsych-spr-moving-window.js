@@ -156,7 +156,7 @@ var sprMovingWindow = (function(jspsych) {
          * @param {Pos} position the position at which to draw text.
          * @param {} ctx the 2d drawing position.
          */
-        constructor(text, position, ctx, record = false) {
+        constructor(text, position, ctx, record = true) {
             if (typeof(text) !== "string")
                 console.error("TextInfo constructor text was not a String");
             if (typeof(record) !== "boolean")
@@ -233,6 +233,7 @@ var sprMovingWindow = (function(jspsych) {
     let gelement = null;        // the element we get from jsPsych.
     let reactiontimes = [];     // store for relevant reactiontimes.
     let groups = [];            // store groups of indices of words
+    let wordset = [];           // store words in a sequence of being shown.
     // to be presented together.
 
     /**
@@ -253,6 +254,7 @@ var sprMovingWindow = (function(jspsych) {
         valid_keys = trial_pars.choices;
         gelement = display_element;
         reactiontimes = [];
+        wordset = [];
         groups = [];
 
         createCanvas(display_element, trial_pars);
@@ -302,7 +304,8 @@ var sprMovingWindow = (function(jspsych) {
         let group_indices = [];
 
         for (let nthgroup = 0; nthgroup < groups.length; nthgroup++) {
-            let record = groups[nthgroup].trim()[0] == "#";
+            //let record = groups[nthgroup].trim()[0] == "#";
+            let record = true;
             let nwordsgroup = splitIntoTokens(
                 groups[nthgroup],
                 RE_WHITE_SPACE
@@ -379,6 +382,7 @@ var sprMovingWindow = (function(jspsych) {
                 let word = words[group.indices[j]];
                 if (i === group_index) {
                     word.drawText();
+                    wordset.push(word.text);
                 }
                 else {
                     word.drawUnderline();
@@ -400,33 +404,27 @@ var sprMovingWindow = (function(jspsych) {
         );
     }
 
+
+
     function finish() {
-
-        let data = {
-            rt1  : -1,
-            rt2  : -1,
-            rt3  : -1,
-            rt4  : -1,
-            rt5  : -1,
-            rt6  : -1,
-            rt7  : -1,
-            rt8  : -1,
-            rt9  : -1,
-            rt10 : -1,
-            rt11 : -1,
-            rt12 : -1,
-            rt13 : -1,
-            rt14 : -1,
-            rt15 : -1,
-        }
-
+        console.error(reactiontimes);
+        var data = {
+            rt1  : -1, rt2  : -1, rt3  : -1, rt4  : -1, rt5  : -1, rt6  : -1,  rt7  : -1, rt8  : -1, rt9  : -1, rt10 : -1,
+            rt11 : -1, rt12 : -1, rt13 : -1, rt14 : -1, rt15 : -1,
+            word1: '', word2: '', word3: '', word4: '', word5:'', word6:'', word7:'', word8:'', word9:'', word10:'',
+            word11:'', word12:'', word13:'', word14:'', word15:''
+        };
         if (reactiontimes.length > 0)
+            data.word1 = wordset[0];
             data.rt1 = Math.round(reactiontimes[0]);
         if (reactiontimes.length > 1)
+            data.word2 = wordset[1];
             data.rt2 = Math.round(reactiontimes[1]);
         if (reactiontimes.length > 2)
+            data.word3 = wordset[2];
             data.rt3 = Math.round(reactiontimes[2]);
         if (reactiontimes.length > 3)
+            data.word4 = wordset[3];
             data.rt4 = Math.round(reactiontimes[3]);
         if (reactiontimes.length > 4)
             data.rt5 = Math.round(reactiontimes[4]);
@@ -453,7 +451,6 @@ var sprMovingWindow = (function(jspsych) {
 
         jsPsych.pluginAPI.clearAllTimeouts();
         jsPsych.pluginAPI.cancelAllKeyboardResponses();
-
         gelement.innerHTML = old_html;
         jsPsych.finishTrial(data);
     }

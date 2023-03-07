@@ -3280,6 +3280,7 @@ var jsPsychModule = (function (exports) {
                 '<div id="jspsych-progressbar-inner"></div>' +
                 "</div></div>");
         }
+
         updateProgressBar() {
             this.setProgressBar(this.getProgress().percent_complete / 100);
         }

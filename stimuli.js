@@ -22,7 +22,6 @@ const PRACTICE_ITEMS = [
     {
         id : 1,
         item_type : PRAC,
-
         stimulus :                                                // Single "/" delimit boundaries between words presented
                                                                   // together. Boundaries must be activated by setting "/" as
                                                                   // GROUPING_STRING in globals.js. The default is null
