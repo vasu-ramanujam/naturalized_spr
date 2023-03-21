@@ -46,7 +46,7 @@ var jsPsychHtmlButtonResponse = (function (jspsych) {
           margin_vertical: {
               type: jspsych.ParameterType.STRING,
               pretty_name: "Margin vertical",
-              default: "0px",
+              default: "50px",
           },
           /** The horizontal margin of the button. */
           margin_horizontal: {

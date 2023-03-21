@@ -45,11 +45,11 @@ var enter_fullscreen = {
 //timeline.push(enter_fullscreen);
 //VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
-/*
+
 const get_size = {
     type: jsPsychVirtualChinrest,
     blindspot_reps: 3,
-    resize_units: "cm",
+    resize_units: "deg",
     pixels_per_unit: 50,
 };
 
@@ -65,7 +65,7 @@ var resized_stimulus = {
   choices: ['Continue']
 };
 timeline.push(resized_stimulus);
-*/
+
 
 
 //CALCULATE amount of characters to display on screen
@@ -114,6 +114,7 @@ function append_and_return_ros (splits, total_string, num_chars) {
     return total_string.slice(substr_worded.length);
 }
 
+
 function split_function (char_space, story) {
     var story_splits = [];
     var remaining_bit = [story];
@@ -135,7 +136,6 @@ let present_text = {type: sprMovingWindow,
   grouping_string : GROUPING_STRING,
   data : {
       id : jsPsych.timelineVariable('id'),
-      //rt1: rt1,
       string : jsPsych.timelineVariable('part'),
       uil_save: true},
       on_start: function() {
@@ -159,8 +159,9 @@ let present_text = {type: sprMovingWindow,
 
 //===== Practice Phase
 
-var num_chars = 50;
+var num_chars = 500;
 var practice1_split = split_function(num_chars,practice1_story2);
+
 var p1 = []
 for (let i = 0; i < practice1_split.length; i++){
     p1.push({id: 'practice1',

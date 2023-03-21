@@ -1,5 +1,6 @@
-var sprMovingWindow = (function(jspsych) {
+var reactiontimes = [];  
 
+var sprMovingWindow = (function(jspsych) {
     const SPR_MW_PLUGIN_NAME = 'spr-moving-window';
 
     const info = {
@@ -62,7 +63,7 @@ var sprMovingWindow = (function(jspsych) {
             height : {
                 type :          jspsych.ParameterType.INT,
                 pretty_name :   "height",
-                default :       600,
+                default :       1000,
                 description :   "The height of the canvas in which the spr moving window is presented"
             },
             grouping_string : {
@@ -149,6 +150,7 @@ var sprMovingWindow = (function(jspsych) {
      * Class to contain some data about a word, on how to present it
      * on a canvas.
      */
+    
     class TextInfo {
 
         /**
@@ -217,7 +219,7 @@ var sprMovingWindow = (function(jspsych) {
         }
     };
 
-    // private variables
+    // variables
 
     let group_index = 0;        // the nth_word that should be presented.
     let words = [];             // array of TextInfo.
@@ -231,9 +233,12 @@ var sprMovingWindow = (function(jspsych) {
     let gheight = 0;            // and the height.
     let valid_keys = null;      // the valid keys or choices for a response
     let gelement = null;        // the element we get from jsPsych.
-    let reactiontimes = [];     // store for relevant reactiontimes.
+   // store for relevant reactiontimes.
     let groups = [];            // store groups of indices of words
     let wordset = [];           // store words in a sequence of being shown.
+
+
+
     // to be presented together.
 
     /**
@@ -253,7 +258,6 @@ var sprMovingWindow = (function(jspsych) {
         gheight = trial_pars.height;
         valid_keys = trial_pars.choices;
         gelement = display_element;
-        reactiontimes = [];
         wordset = [];
         groups = [];
 
@@ -404,51 +408,18 @@ var sprMovingWindow = (function(jspsych) {
         );
     }
 
-
-
     function finish() {
-        console.error(reactiontimes);
-        var data = {
-            rt1  : -1, rt2  : -1, rt3  : -1, rt4  : -1, rt5  : -1, rt6  : -1,  rt7  : -1, rt8  : -1, rt9  : -1, rt10 : -1,
-            rt11 : -1, rt12 : -1, rt13 : -1, rt14 : -1, rt15 : -1,
-            word1: '', word2: '', word3: '', word4: '', word5:'', word6:'', word7:'', word8:'', word9:'', word10:'',
-            word11:'', word12:'', word13:'', word14:'', word15:''
-        };
-        if (reactiontimes.length > 0)
-            data.word1 = wordset[0];
-            data.rt1 = Math.round(reactiontimes[0]);
-        if (reactiontimes.length > 1)
-            data.word2 = wordset[1];
-            data.rt2 = Math.round(reactiontimes[1]);
-        if (reactiontimes.length > 2)
-            data.word3 = wordset[2];
-            data.rt3 = Math.round(reactiontimes[2]);
-        if (reactiontimes.length > 3)
-            data.word4 = wordset[3];
-            data.rt4 = Math.round(reactiontimes[3]);
-        if (reactiontimes.length > 4)
-            data.rt5 = Math.round(reactiontimes[4]);
-        if (reactiontimes.length > 5)
-            data.rt6 = Math.round(reactiontimes[5]);
-        if (reactiontimes.length > 6)
-            data.rt7 = Math.round(reactiontimes[6]);
-        if (reactiontimes.length > 7)
-            data.rt8 = Math.round(reactiontimes[7]);
-        if (reactiontimes.length > 8)
-            data.rt9 = Math.round(reactiontimes[8]);
-        if (reactiontimes.length > 9)
-            data.rt10 = Math.round(reactiontimes[9]);
-        if (reactiontimes.length > 10)
-            data.rt11 = Math.round(reactiontimes[10]);
-        if (reactiontimes.length > 11)
-            data.rt12 = Math.round(reactiontimes[11]);
-        if (reactiontimes.length > 12)
-            data.rt13 = Math.round(reactiontimes[12]);
-        if (reactiontimes.length > 13)
-            data.rt14 = Math.round(reactiontimes[13]);
-        if (reactiontimes.length > 14)
-            data.rt15 = Math.round(reactiontimes[14]);
-
+        var data = {};
+        for (var i = 0; i < 150; i++) {
+            data['rt'+(i+1)] = -1;
+            data['word'+(i+1)] = '';
+        }
+        for (var i = 0; i < reactiontimes.length; i++) {
+            var rt = Math.round(reactiontimes[i]);
+            var word = wordset[i];
+            data['rt'+(i+1)] = rt;
+            data['word'+(i+1)] = word;
+        }
         jsPsych.pluginAPI.clearAllTimeouts();
         jsPsych.pluginAPI.cancelAllKeyboardResponses();
         gelement.innerHTML = old_html;
@@ -484,14 +455,13 @@ var sprMovingWindow = (function(jspsych) {
      */
     function determineLineHeight(font, font_size) {
         let text = "Hello World";
-
         let div = document.createElement("div");
         div.innerHTML = text;
         div.style.position = 'absolute';
         div.style.top  = '-9999px';
         div.style.left = '-9999px';
         div.style.fontFamily = font;
-        div.style.fontSize = font_size + 'pt'; // or 'px'
+        div.style.fontSize = font_size + 'px'; // or 'px'
         document.body.appendChild(div);
         let height = div.offsetHeight;
         document.body.removeChild(div);
