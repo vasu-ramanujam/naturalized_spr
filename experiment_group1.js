@@ -9,7 +9,7 @@ var timeline = [];
 
 /* init connection with pavlovia.org */
 var pavlovia_init = {
-	type: "pavlovia",
+	type: jsPsychPavlovia,
 	command: "init"
 };
 timeline.push(pavlovia_init);
@@ -463,7 +463,7 @@ timeline.push(feedback_phase_s3);
 
 /* init connection with pavlovia.org */
 var pavlovia_init = {
-	type: "pavlovia",
+	type: jsPsychPavlovia,
 	command: "init"
 };
 timeline.push(pavlovia_init);
