@@ -6,20 +6,22 @@ var jsPsych = initJsPsych({
     }
 })
 var timeline = [];
-var practice_timeline = [];
-var story1_timeline = [];
-var story2_timeline = [];
-var story3_timeline = [];
+
+/* init connection with pavlovia.org */
+var pavlovia_init = {
+	type: "pavlovia",
+	command: "init"
+};
+timeline.push(pavlovia_init);
 
 
 //INTRODUCTION AND FULLSCREEN
-/*
+
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: 'Welcome to the experiment! Press any key to begin.'
 }
 timeline.push(welcome);
-*/
 
 
 const KEY_CODE_SPACE = ' ';
@@ -456,10 +458,17 @@ var feedback_phase_s3 = {
   }
 timeline.push(feedback_phase_s3);
 
-
-
-
 */
+
+
+/* init connection with pavlovia.org */
+var pavlovia_init = {
+	type: "pavlovia",
+	command: "init"
+};
+timeline.push(pavlovia_init);
+
+
 var end = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: 'The trial has ended. ',
