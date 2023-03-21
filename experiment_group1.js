@@ -2,7 +2,7 @@ var jsPsych = initJsPsych({
     show_progress_bar:true,
     auto_update_progress_bar: true,
     on_finish: function() {
-        jsPsych.data.displayData('csv');
+        //jsPsych.data.displayData('csv');
     }
 })
 var timeline = [];
@@ -43,7 +43,7 @@ var enter_fullscreen = {
     type: jsPsychFullscreen,
     fullscreen_mode: true
   }
-//timeline.push(enter_fullscreen);
+timeline.push(enter_fullscreen);
 //VIRTUAL CHINREST: RESIZE DATA TO PARTICIPANT SCREEN SIZES AND DISTANCES
 
 
@@ -223,7 +223,7 @@ var feedback_phase_p = {
     }
   }
 timeline.push(feedback_phase_p);
-/*
+
 //===== Story 1 Phase
 first_story = story1_split
 first_story_questions = story1_questions
@@ -458,7 +458,7 @@ var feedback_phase_s3 = {
   }
 timeline.push(feedback_phase_s3);
 
-*/
+
 
 
 /* init connection with pavlovia.org */
