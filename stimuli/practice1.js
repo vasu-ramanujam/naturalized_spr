@@ -48,9 +48,9 @@ mother had missed her early in the forenoon and had looked\n
 for her in every place they could think of. Each hour they\n
 grew more worried, and at dusk they decided to hire this\n
 man to search the city. When the runaway woke up and heard\n
-what the man was shouting—"Lost—Lost—A little girl,\n
+what the man was shouting — "Lost— Lost— A little girl,\n
 six years old, in a pink frock, white hat, and new, green\n`,
-`shoes"—she called out in the darkness: "Why—dat's ME!"\n
+`shoes"—she called out in the darkness: "Why — dat's ME!"\n
 The town crier took Louisa by the hand and led her home,\n
 where you may be sure she was welcomed with joy. Mr. and\n
 Mrs. Alcott, from first to last, had had a good many\n
@@ -68,7 +68,7 @@ whole day! Except for this one fault, Louisa was a good\n
 child, so she felt much ashamed that she had caused her\n
 mother, whom she loved dearly, so much worry. As she sat\n
 there, tied to the sofa, she made up her mind that she\n
-would never frighten her so again. No—she would cure\n
+would never frighten her so again. No— she would cure\n
 herself of the running-away habit! After that day, whenever\n`,
 `she felt the least desire to slip out of the house without\n
 asking permission, she would hurry to her own little room\n
