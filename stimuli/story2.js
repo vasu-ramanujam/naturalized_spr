@@ -2,95 +2,91 @@
 var story2_split = [`A clear and joyous day it was and out on the wide, open sea\n
 thousands upon thousands of sparkling water-drops excited\n
 by getting to play in the ocean danced all around. One of\n
-these was a merry little fellow named Aqua who danced on\n
-the silver backs of the fishes as they plunged up and down\n
-in the waves, and, no matter how high he sprung, he always\n
-came down again into his mother's lap. His mother, you\n
-know, was the Ocean, and very beautiful she looked that\n
-summer day in her dark blue dress and white ruffles. By and\n
-by, the happy water-drop tired of his play, and looking up\n`,
-`to the clear sky above him, thought he would like to have a\n
-sail on one of the white, marshmallow-like clouds, instead\n
-of spending his whole life in the ocean. Of the sky, little\n
-Aqua had always been afraid, but he decided to finally face\n
-his demons and suggested a solution involving the Sun\n
-carrying him up to the sky would be ideal. The Sun\n
-understood Aqua’s request came from his heart, so he\n
-acquiesced and also took ever so many other drops, so that\n
-Aqua might not be lonesome on the way. It was only the sun\n
-that knew this, however, for all the other drops had been\n`,
-`changed into fine mist or vapor and Aqua could not see\n
-them. Do you know what vapor is? If you breathe into the\n
-air, when it is cold enough, you will see it coming out of\n
-your mouth thick and fast like steam. When the vapor is\n
-quite near the earth, we call it "fog." Into vapor the\n
-water drops that danced in the ocean had been changed\n
-because in their own shape they were too heavy for the\n
-sunbeams that the sun let out to carry. Higher and higher\n
-they sailed, and though it was grand, Aqua and his friends\n
-were like fish out of water, so they grew quite dizzy. They\n`,
-`enjoyed looking down on the world below, while the wind\n
-scattered them across the four corners of the earth, but\n
-after a while it grew nearly time for the Sun to go to bed.\n
-He became very red in the face, and began to sink lower and\n
-lower, until suddenly he went clear out of sight! Poor\n
-little Aqua frightened by the impending cold and darkness\n
-wished he could sleep not in the sky, but somewhere closer\n
-to earth. Then, Aqua heard the wind blow and conjectured\n
-that maybe the wind could take him back down to the ocean.\n
-Indeed, the wind took pity on him and fanned him, together\n`,
-`with all of his brothers and sisters, into a heavy gray\n
-cloud, after which he blew them apart and told them to\n
-hurry down, fast and furious to the earth so they could\n
-have a fighting chance of reaching the ocean. Down they\n
-went, rolling over each other until with a patter and\n
-clatter and spatter they touched the ground, and all the\n
-people that the raindrops fell on cried, "It’s raining",\n
-and took out their umbrellas. Some of the drops that were\n
-the most fortunate, including Aqua, fell on a mountainside,\n
-and down the rocky cliff they ran. Together they plunged\n`,
-`into a mountain brook, which came foaming and dashing\n
-along, leaping over rocks and rushing down the hillside,\n
-until in the valley below they heard the strangest\n
-clattering noise. The little water-drops were then able to\n
-make out a flourmill that was standing on the bank. Inside\n
-the mill the water-drops saw two great stones, which the\n
-big wheel kept whizzing round and round. The stones\n
-smoothed by the spinning, were busy grinding the wheat into\n
-flour and the corn into golden meal. But what giant do you\n
-suppose it was who could turn and swing that tremendous\n`,
-`wheel? No giant at all. It was just our tiny little water\n
-drops, who sprang on it by hundreds and thousands, and\n
-whirled it over and over. It was lucky for the water-drops\n
-that the brook where they were swimming next emptied into a\n
-beautiful pond where ducks and geese were living\n
-peacefully. Aqua liked to play hide and seek in this pond,\n
-and it was his brother water drop who he fooled by swimming\n
-to a big pool of water and pretending to hide there, but\n
-then sneaking under a rock into an obscured little puddle.\n
-His brother had blatantly peaked and even followed Aqua as\n`,
-`he entered the big pool of water, so when he searched there\n
-and could not find him, he was extremely surprised and gave\n
-up. Aqua liked this pond where he could play all day, so he\n
-stayed a good while, sailing up and down, taking the ducks'\n
-backs for ships and the frogs for horses, but after a time\n
-he tired of the dull life, and he and his brothers floated\n
-under a bridge for a long distance, until they saw another\n
-brook tumbling down a hillside. Come, let's join hands!\n
-cried Aqua and because the water drops were all together,\n
-overcoming the brook was child’s play. It was by the help\n`,
-`of Aqua and his brothers that the bewitching river was able\n
-to float heavy ships, though not so long ago it was only a\n
-little stream. As the river grew wider and he could almost\n
-see the ocean, Aqua realized his journey was almost over\n
-and he had come full circle. Back in the ocean, he felt\n
+these was a merry little fellow named Aqua who danced on the\n
+silver backs of the fishes as they plunged up and down in the\n
+waves, and, no matter how high he sprung, he always came down\n
+again into his mother's lap. His mother, you know, was the\n
+Ocean, and very beautiful she looked that summer day in her\n
+dark blue dress and white ruffles. By and by, the happy\n
+water-drop tired of his play, and looking up to the clear sky\n`,
+`above him, thought he would like to have a sail on one of the\n
+white, marshmallow-like clouds, instead of spending his\n
+whole life in the ocean. Of the sky, little Aqua had always\n
+been afraid, but he decided to finally face his demons and\n
+suggested a solution involving the Sun carrying him up to the\n
+sky would be ideal. The Sun understood Aqua’s request came\n
+from his heart, so he acquiesced and also took ever so many\n
+other drops, so that Aqua might not be lonesome on the way. It\n
+was only the sun that knew this, however, for all the other\n
+drops had been changed into fine mist or vapor and Aqua could\n`,
+`not see them. Do you know what vapor is? If you breathe into\n
+the air, when it is cold enough, you will see it coming out of\n
+your mouth thick and fast like steam. When the vapor is quite\n
+near the earth, we call it "fog." Into vapor the water drops\n
+that danced in the ocean had been changed because in their\n
+own shape they were too heavy for the sunbeams that the sun\n
+let out to carry. Higher and higher they sailed, and though\n
+it was grand, Aqua and his friends were like fish out of\n
+water, so they grew quite dizzy. They enjoyed looking down on\n
+the world below, while the wind scattered them across the\n`,
+`four corners of the earth, but after a while it grew nearly\n
+time for the Sun to go to bed. He became very red in the face,\n
+and began to sink lower and lower, until suddenly he went\n
+clear out of sight! Poor little Aqua frightened by the\n
+impending cold and darkness wished he could sleep not in the\n
+sky, but somewhere closer to earth. Then, Aqua heard the wind\n
+blow and conjectured that maybe the wind could take him back\n
+down to the ocean. Indeed, the wind took pity on him and\n
+fanned him, together with all of his brothers and sisters,\n
+into a heavy gray cloud, after which he blew them apart and\n`,
+`told them to hurry down, fast and furious to the earth so they\n
+could have a fighting chance of reaching the ocean. Down they\n
+went, rolling over each other until with a patter and clatter\n
+and spatter they touched the ground, and all the people that\n
+the raindrops fell on cried, "It’s raining", and took out\n
+their umbrellas. Some of the drops that were the most\n
+fortunate, including Aqua, fell on a mountainside, and down\n
+the rocky cliff they ran. Together they plunged into a\n
+mountain brook, which came foaming and dashing along,\n
+leaping over rocks and rushing down the hillside, until in\n`,
+`the valley below they heard the strangest clattering noise.\n
+The little water-drops were then able to make out a flourmill\n
+that was standing on the bank. Inside the mill the\n
+water-drops saw two great stones, which the big wheel kept\n
+whizzing round and round. The stones smoothed by the\n
+spinning, were busy grinding the wheat into flour and the\n
+corn into golden meal. But what giant do you suppose it was\n
+who could turn and swing that tremendous wheel? No giant at\n
+all. It was just our tiny little water drops, who sprang on it\n
+by hundreds and thousands, and whirled it over and over. It\n`,
+`was lucky for the water-drops that the brook where they were\n
+swimming next emptied into a beautiful pond where ducks and\n
+geese were living peacefully. Aqua liked to play hide and\n
+seek in this pond, and it was his brother water drop who he\n
+fooled by swimming to a big pool of water and pretending to\n
+hide there, but then sneaking under a rock into an obscured\n
+little puddle. His brother had blatantly peaked and even\n
+followed Aqua as he entered the big pool of water, so when he\n
+searched there and could not find him, he was extremely\n
+surprised and gave up. Aqua liked this pond where he could\n`,
+`play all day, so he stayed a good while, sailing up and down,\n
+taking the ducks' backs for ships and the frogs for horses,\n
+but after a time he tired of the dull life, and he and his\n
+brothers floated under a bridge for a long distance, until\n
+they saw another brook tumbling down a hillside. Come, let's\n
+join hands! cried Aqua and because the water drops were all\n
+together, overcoming the brook was child’s play. It was by\n
+the help of Aqua and his brothers that the bewitching river\n
+was able to float heavy ships, though not so long ago it was\n
+only a little stream. As the river grew wider and he could\n`,
+`almost see the ocean, Aqua realized his journey was almost\n
+over and he had come full circle. Back in the ocean, he felt\n
 right at home. For him, this was the safest, sweetest place\n
-in the whole wide world. During the warm summer evenings,\n
-if you take a walk on the sea beach, you will hear the\n
-gentle rippling swash of the waves and some say that it\n
-must be the gurgling voices of Aqua and his brother water\n`,
-`drops telling each other about their wonderful journey\n
-around the world.`];
+in the whole wide world. During the warm summer evenings, if\n
+you take a walk on the sea beach, you will hear the gentle\n
+rippling swash of the waves and some say that it must be the\n
+gurgling voices of Aqua and his brother water drops telling\n
+each other about their wonderful journey around the world.`];
 
 
 

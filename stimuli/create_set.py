@@ -1,9 +1,10 @@
-def split_text(text, n):
+def split_text(text,n):
     words = text.split()
     chunks = []
     current_chunk = ''
     for word in words:
-        if len(current_chunk) + len(word) + 1 <= n:
+        
+        if len(current_chunk) - current_chunk.count(' ')*0.7 + len(word) + 1 <= n:
             current_chunk += word + ' '
         else:
             chunks.append(current_chunk.strip()+'\\n')
@@ -19,6 +20,8 @@ def create_sent_set(splitted_text, num_row):
    retVal.append('\n'.join(splitted_text[(i+1)*num_row:]).strip())
    return retVal
 
-def print_out(split_set):
-    for i in create_sent_set(split_set, 10):
-        print('`'+i+'`,')
+def print_out(text, n = 55):
+    text = open(text,'r').read()
+    text = split_text(text,n)
+    for j in create_sent_set(text, 10):
+        print('`'+j+'`,')

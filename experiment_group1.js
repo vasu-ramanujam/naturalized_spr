@@ -7,12 +7,12 @@ var jsPsych = initJsPsych({
 })
 var timeline = [];
 
-/* init connection with pavlovia.org */
+/* init connection with pavlovia.org 
 var pavlovia_init = {
 	type: jsPsychPavlovia,
 	command: "init"
 };
-timeline.push(pavlovia_init);
+timeline.push(pavlovia_init);*/
 
 
 //INTRODUCTION AND FULLSCREEN
@@ -461,12 +461,12 @@ timeline.push(feedback_phase_s3);
 
 
 
-/* init connection with pavlovia.org */
+/* init connection with pavlovia.org 
 var pavlovia_init = {
 	type: jsPsychPavlovia,
 	command: "init"
 };
-timeline.push(pavlovia_init);
+timeline.push(pavlovia_init);*/
 
 
 var end = {
