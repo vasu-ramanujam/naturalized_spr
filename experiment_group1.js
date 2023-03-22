@@ -59,10 +59,10 @@ timeline.push(get_size);
 
 var resized_stimulus = {
     type: jsPsychHtmlButtonResponse,
-  stimulus: `
-    <p>If the measurements were done correctly, the square below should be 10 cm x 10 cm.</p>
+    stimulus: `
+    <p style = 'font-size: 20x;'>If the measurements were done correctly, the square below should be 10 cm x 10 cm.</p>
     <div style="background-color: black; width: 500px; height: 500px; margin: 20px auto;"></div>
-  `,
+    `,
   choices: ['Continue']
 };
 timeline.push(resized_stimulus);
@@ -160,8 +160,8 @@ var page_index = 1;
 var ttl_page = practice1_split.length;
 
 var reading_phase_p = {
-    timeline:   [fixcross,
-                present_text],
+    timeline:   //[fixcross,
+                [present_text],
     timeline_variables: p,
     on_start: function() {
         jsPsych.show_progress_bar= false
@@ -243,8 +243,8 @@ var page_index = 1;
 var ttl_page = first_story.length;
 
 var reading_phase_s1 = {
-    timeline:   [fixcross,
-                present_text],
+    timeline:   //[fixcross,
+                [present_text],
     timeline_variables: p,
     on_start: function() {
         jsPsych.show_progress_bar= false
@@ -321,8 +321,8 @@ var page_index = 1;
 var ttl_page = second_story.length;
 
 var reading_phase_s2 = {
-    timeline:   [fixcross,
-                present_text],
+    timeline:  //\[fixcross,
+                [present_text],
     timeline_variables: p,
     on_start: function() {
         jsPsych.show_progress_bar= false
@@ -401,8 +401,8 @@ var page_index = 1;
 var ttl_page = third_story.length;
 
 var reading_phase_s3 = {
-    timeline:   [fixcross,
-                present_text],
+    timeline:   //[fixcross,
+                [present_text],
     timeline_variables: p,
     on_start: function() {
         jsPsych.show_progress_bar= false
