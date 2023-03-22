@@ -213,9 +213,9 @@ var feedback_phase_p = {
       // Instead, this function will check the accuracy of the last response and use that information to set
       // the stimulus value on each trial.
       var average_rt_p = (practice_total_rt.reduce((a, b) => a + b)) / practice_total_wc;
-      var accuracy_p = Math.round(practice_total_acc/12);
+      var accuracy_p = Math.round(practice_total_acc*100/12);
       //return "<p>The average RT and accuracy are "+ average_rt_p+accuracy_p+ "</p>"; // the parameter value has to be returned from the function
-      return "<p>You achieved accuracy " + accuracy_p+ "</p>"
+      return "<p>You achieved an accuracy of " + accuracy_p+ "% </p>"
     },
     on_finish:function(){
         console.error(reactiontimes);
@@ -291,9 +291,9 @@ var feedback_phase_s1 = {
       // Instead, this function will check the accuracy of the last response and use that information to set
       // the stimulus value on each trial.
       var average_rt_s1 = (first_story_total_rt.reduce((a, b) => a + b)) / first_story_total_wc;
-      var accuracy_s1 = Math.round(first_story_total_acc/12);
+      var accuracy_s1 = Math.round(first_story_total_acc*100/12);
       //return "<p>The average RT and accuracy are "+ average_rt_p+accuracy_p+ "</p>"; // the parameter value has to be returned from the function
-      return "<p>You achieved accuracy " + accuracy_s1+ "</p>"
+      return "<p>You achieved an accuracy of " + accuracy_s1+ "% </p>"
     },
     on_finish:function(){
         console.error(reactiontimes);
@@ -369,9 +369,9 @@ var feedback_phase_s2 = {
       // Instead, this function will check the accuracy of the last response and use that information to set
       // the stimulus value on each trial.
       var average_rt_s2 = (second_story_total_rt.reduce((a, b) => a + b)) / second_story_total_wc;
-      var accuracy_s2 = Math.round(second_story_total_acc/12);
+      var accuracy_s2 = Math.round(second_story_total_acc*100/12);
       //return "<p>The average RT and accuracy are "+ average_rt_p+accuracy_p+ "</p>"; // the parameter value has to be returned from the function
-      return "<p>You achieved accuracy " + accuracy_s2+ "</p>"
+      return "<p>You achieved an accuracy of " + accuracy_s2+ "% </p>"
     },
     on_finish:function(){
         console.error(reactiontimes);
@@ -449,9 +449,9 @@ var feedback_phase_s3 = {
       // Instead, this function will check the accuracy of the last response and use that information to set
       // the stimulus value on each trial.
       var average_rt_s3 = (third_story_total_rt.reduce((a, b) => a + b)) / third_story_total_wc;
-      var accuracy_s3 = Math.round(third_story_total_acc/12);
+      var accuracy_s3 = Math.round(third_story_total_acc*100/12);
       //return "<p>The average RT and accuracy are "+ average_rt_p+accuracy_p+ "</p>"; // the parameter value has to be returned from the function
-      return "<p>You achieved accuracy " + accuracy_s3+ "</p>"
+      return "<p>You achieved an accuracy of " + accuracy_s3+ "% </p>"
     },
     on_finish:function(){
     }
