@@ -1,5 +1,5 @@
 
-var practice1_split = [`As much as seventy years ago, in the city of Boston, there\n
+var practice1_split_short = [`As much as seventy years ago, in the city of Boston, there\n
 lived a small girl who had the naughty habit of running\n
 away. On a certain April morning, almost as soon as her\n
 mother finished buttoning her dress, Louisa May Alcott\n
@@ -10,7 +10,7 @@ she did not care so very much just where she went so long\n
 as she was having an adventure, all by herself. Suddenly\n
 she came upon some children who said they were going to a\n`]
 
-var practice1_split2 = [`As much as seventy years ago, in the city of Boston, there\n
+var practice1_split = [`As much as seventy years ago, in the city of Boston, there\n
 lived a small girl who had the naughty habit of running\n
 away. On a certain April morning, almost as soon as her\n
 mother finished buttoning her dress, Louisa May Alcott\n
