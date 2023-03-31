@@ -184,12 +184,13 @@ timeline.push(reading_phase_p);
 
 
 practice_total_acc = 0;
+
 var quiz_phase_p= {
     timeline: [{type: jsPsychHtmlButtonResponse,
                 choices: [jsPsych.timelineVariable("a0"), 
                          jsPsych.timelineVariable("a1")],
                 stimulus: jsPsych.timelineVariable("q"),
-                data: {correctResponse: jsPsych.timelineVariable("cr")},
+                data: {correctResponse: jsPsych.timelineVariable("cr"), questionNumber: jsPsych.timelineVariable("num")},
                 on_finish: function(data){
                             console.error(data)
                             if(data.response ==data.correctResponse){
@@ -267,7 +268,7 @@ var quiz_phase_s1= {
                 choices: [jsPsych.timelineVariable("a0"), 
                          jsPsych.timelineVariable("a1")],
                 stimulus: jsPsych.timelineVariable("q"),
-                data: {correctResponse: jsPsych.timelineVariable("cr")},
+                data: {correctResponse: jsPsych.timelineVariable("cr"), questionNumber: jsPsych.timelineVariable("num")},
                 on_finish: function(data){
                             console.error(data)
                             if(data.response ==data.correctResponse){
@@ -345,7 +346,7 @@ var quiz_phase_s2= {
                 choices: [jsPsych.timelineVariable("a0"), 
                          jsPsych.timelineVariable("a1")],
                 stimulus: jsPsych.timelineVariable("q"),
-                data: {correctResponse: jsPsych.timelineVariable("cr")},
+                data: {correctResponse: jsPsych.timelineVariable("cr"), questionNumber: jsPsych.timelineVariable("num")},
                 on_finish: function(data){
                             console.error(data)
                             if(data.response ==data.correctResponse){
@@ -425,7 +426,7 @@ var quiz_phase_s3= {
                 choices: [jsPsych.timelineVariable("a0"), 
                          jsPsych.timelineVariable("a1")],
                 stimulus: jsPsych.timelineVariable("q"),
-                data: {correctResponse: jsPsych.timelineVariable("cr")},
+                data: {correctResponse: jsPsych.timelineVariable("cr"), questionNumber: jsPsych.timelineVariable("num")},
                 on_finish: function(data){
                             console.error(data)
                             if(data.response ==data.correctResponse){

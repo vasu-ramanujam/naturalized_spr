@@ -99,49 +99,74 @@ var story3_questions = [
   {q: "Which birds were expected not to come to the meeting?",
     a0: "The birds who were least likely to be selected as a king",
     a1: "The birds who were from the most distant",
-    cr: '1'},
+    cr: '1'
+    , num: '1'
+  },
   {q: "Which bird thought himself the de facto king?",
     a0: "The hawk",
     a1: "The eagle",
-    cr: '1'},
+    cr: '1'
+    , num: '2'
+  },
   {q: "Which bird's call was annoying to the other birds?",
    a0: "The crow",
    a1: "The cuckoo",
-   cr: '1'},
+   cr: '1'
+   , num: '3'
+  },
   {q: "During the first competition, what was the air full of?",
     a0: "Dust",
     a1: "Sound",
-    cr: '0'},
+    cr: '0'
+    , num: '4'
+  },
   {q: "How did the little bird manage to fly higher than the eagle?",
     a0: "Flew on eagle's back",
     a1: "Flew right below the eagle",
-    cr: '0'},
+    cr: '0'
+    , num: '5'
+  },
   {q: "Which bird suggested doing another competition?",
     a0: "The little bird",
     a1: "The eagle",
-    cr: '0'},
+    cr: '0'
+    , num: '6'
+  },
   {q: "What was the second competition about?",
     a0: "Digging the deepest into the earth",
     a1: "Flying the highest",
-    cr: '1'},
+    cr: '1'
+    , num: '7'
+  },
   {q: " How did the little bird feel about the second competition?",
     a0: "Nervous",
     a1: "Confident",
-    cr: '1'},
+    cr: '1'
+    , num: '8'
+  },
   {q: "Who was put on guard to watch the little bird after he was punished for his trickery?",
     a0: "An owl",
     a1: "A mouse",
-    cr: '0'},
+    cr: '0'
+    , num: '9'
+  },
   {q: "After having a bird on guard to watch the little bird, what did the other birds do?",
     a0: "Went to bed",
     a1: "Went to have a meal",
-    cr: '0'},
+    cr: '0'
+    , num: '10'
+  },
   {q: "Who was the owl angry at in the end?",
     a0: "A mouse",
     a1: "The bird",
-    cr: '0'},
+    cr: '0'
+    , num: '11'
+  }
+    ,
   {q: "What was the reason for the little bird staying out of sight?",
     a0: "Fear of the punishment from the mouse",
     a1: "Fear of the punishment from the other birds",
-    cr: '1'}
+    cr: '1'
+    , num: '12'
+  }
   ]
